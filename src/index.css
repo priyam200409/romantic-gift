@@ -1,0 +1,1512 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+
+@import "tailwindcss";
+
+
+/* ============================================================
+   OUR STORY
+   CINEMATIC ROMANTIC DESIGN SYSTEM
+
+   Direction:
+   - cinematic
+   - romantic
+   - warm
+   - premium
+   - editorial
+   - continuously changing atmosphere
+
+   IMPORTANT:
+   The global cinematic background is rendered once in App.jsx.
+============================================================ */
+
+
+/* ============================================================
+   DARK THEME
+============================================================ */
+
+:root {
+  color-scheme: dark;
+
+
+  /* ==========================================================
+     BASE COLORS
+  ========================================================== */
+
+  --bg: #24181f;
+
+  --surface: #2d2027;
+
+  --surface-elevated: #382830;
+
+  --surface-deep: #1d1319;
+
+  --surface-soft: rgba(255, 235, 226, 0.055);
+
+  --surface-hover: rgba(255, 235, 226, 0.085);
+
+
+  /* ==========================================================
+     TEXT
+  ========================================================== */
+
+  --text-primary: #fff3eb;
+
+  --text-secondary: #d0b9ba;
+
+  --text-muted: #a28b92;
+
+  --text-faint: #806b73;
+
+
+  /* ==========================================================
+     BORDERS
+  ========================================================== */
+
+  --border: rgba(255, 224, 214, 0.13);
+
+  --border-soft: rgba(255, 224, 214, 0.065);
+
+  --border-strong: rgba(255, 224, 214, 0.22);
+
+
+  /* ==========================================================
+     ROMANTIC ROSE
+  ========================================================== */
+
+  --accent: #c77b91;
+
+  --accent-soft: rgba(199, 123, 145, 0.14);
+
+  --accent-hover: #d68a9f;
+
+
+  /* ==========================================================
+     BURGUNDY / WINE
+  ========================================================== */
+
+  --burgundy: #91435d;
+
+  --burgundy-soft: rgba(145, 67, 93, 0.18);
+
+  --burgundy-deep: #572b3d;
+
+
+  /* ==========================================================
+     CHAMPAGNE
+  ========================================================== */
+
+  --champagne: #dfc09b;
+
+  --champagne-soft: rgba(223, 192, 155, 0.11);
+
+
+  /* ==========================================================
+     BUTTONS
+  ========================================================== */
+
+  --button-bg: #fff1e8;
+
+  --button-text: #24181f;
+
+
+  /* ==========================================================
+     SHADOWS
+  ========================================================== */
+
+  --shadow-soft: rgba(12, 6, 9, 0.22);
+
+  --shadow-card: rgba(12, 6, 9, 0.34);
+
+  --shadow-deep: rgba(8, 4, 7, 0.48);
+
+
+  /* ==========================================================
+     CINEMATIC ATMOSPHERE
+  ========================================================== */
+
+  --glow-rose: rgba(198, 76, 108, 0.17);
+
+  --glow-burgundy: rgba(128, 40, 67, 0.18);
+
+  --glow-champagne: rgba(221, 166, 111, 0.10);
+
+  --glow-plum: rgba(116, 58, 91, 0.12);
+
+
+  /* ==========================================================
+     GRID
+  ========================================================== */
+
+  --grid-line: rgba(255, 229, 218, 0.028);
+}
+
+
+/* ============================================================
+   LIGHT THEME
+============================================================ */
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+
+  /* ==========================================================
+     WARM IVORY
+  ========================================================== */
+
+  --bg: #f8f0eb;
+
+  --surface: #fdf8f5;
+
+  --surface-elevated: #ffffff;
+
+  --surface-deep: #eee2dc;
+
+  --surface-soft: rgba(74, 42, 49, 0.035);
+
+  --surface-hover: rgba(74, 42, 49, 0.065);
+
+
+  /* ==========================================================
+     TEXT
+  ========================================================== */
+
+  --text-primary: #302328;
+
+  --text-secondary: #735f66;
+
+  --text-muted: #978188;
+
+  --text-faint: #b19ea4;
+
+
+  /* ==========================================================
+     BORDERS
+  ========================================================== */
+
+  --border: rgba(61, 39, 45, 0.12);
+
+  --border-soft: rgba(61, 39, 45, 0.07);
+
+  --border-strong: rgba(61, 39, 45, 0.19);
+
+
+  /* ==========================================================
+     ROSE
+  ========================================================== */
+
+  --accent: #a95770;
+
+  --accent-soft: rgba(169, 87, 112, 0.10);
+
+  --accent-hover: #91465e;
+
+
+  /* ==========================================================
+     BURGUNDY
+  ========================================================== */
+
+  --burgundy: #813c53;
+
+  --burgundy-soft: rgba(129, 60, 83, 0.08);
+
+  --burgundy-deep: #663043;
+
+
+  /* ==========================================================
+     CHAMPAGNE
+  ========================================================== */
+
+  --champagne: #a98259;
+
+  --champagne-soft: rgba(169, 130, 89, 0.09);
+
+
+  /* ==========================================================
+     BUTTONS
+  ========================================================== */
+
+  --button-bg: #302328;
+
+  --button-text: #fffaf7;
+
+
+  /* ==========================================================
+     SHADOWS
+  ========================================================== */
+
+  --shadow-soft: rgba(65, 40, 47, 0.07);
+
+  --shadow-card: rgba(65, 40, 47, 0.11);
+
+  --shadow-deep: rgba(65, 40, 47, 0.16);
+
+
+  /* ==========================================================
+     LIGHT CINEMATIC ATMOSPHERE
+  ========================================================== */
+
+  --glow-rose: rgba(191, 93, 123, 0.10);
+
+  --glow-burgundy: rgba(143, 61, 87, 0.08);
+
+  --glow-champagne: rgba(201, 160, 111, 0.10);
+
+  --glow-plum: rgba(126, 84, 111, 0.06);
+
+
+  --grid-line: rgba(54, 37, 42, 0.035);
+}
+
+
+/* ============================================================
+   GLOBAL FOUNDATION
+============================================================ */
+
+:root {
+  font-family: "DM Sans", sans-serif;
+
+  color: var(--text-primary);
+
+  background: var(--bg);
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  min-width: 320px;
+
+  background: var(--bg);
+
+  scroll-behavior: smooth;
+
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+}
+
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  background: var(--bg);
+
+  color: var(--text-primary);
+
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+}
+
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+button {
+  font: inherit;
+}
+
+
+::selection {
+  background: var(--accent-soft);
+
+  color: var(--text-primary);
+}
+
+
+.serif {
+  font-family: "Playfair Display", serif;
+}
+
+
+/* ============================================================
+   THEME UTILITIES
+============================================================ */
+
+.bg-theme {
+  background-color: var(--bg);
+}
+
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+
+.bg-surface-elevated {
+  background-color: var(--surface-elevated);
+}
+
+
+.bg-surface-deep {
+  background-color: var(--surface-deep);
+}
+
+
+.bg-surface-soft {
+  background-color: var(--surface-soft);
+}
+
+
+.bg-surface-hover {
+  background-color: var(--surface-hover);
+}
+
+
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+
+.text-theme-muted {
+  color: var(--text-muted);
+}
+
+
+.text-theme-faint {
+  color: var(--text-faint);
+}
+
+
+.text-theme-accent {
+  color: var(--accent);
+}
+
+
+.text-theme-champagne {
+  color: var(--champagne);
+}
+
+
+.border-theme {
+  border-color: var(--border);
+}
+
+
+.border-theme-soft {
+  border-color: var(--border-soft);
+}
+
+
+.border-theme-strong {
+  border-color: var(--border-strong);
+}
+
+
+.bg-theme-accent {
+  background-color: var(--accent);
+}
+
+
+.bg-theme-button {
+  background-color: var(--button-bg);
+}
+
+
+.text-theme-button {
+  color: var(--button-text);
+}
+
+
+/* ============================================================
+   CINEMATIC BACKGROUND
+   ------------------------------------------------------------
+   This is the background you already liked.
+   It is now rendered globally through App.jsx.
+============================================================ */
+
+.page-background {
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  isolation: isolate;
+
+
+  /*
+    Romantic cinematic color journey:
+
+    plum
+      ↓
+    burgundy
+      ↓
+    wine
+      ↓
+    dusty rose
+      ↓
+    mauve
+      ↓
+    champagne
+      ↓
+    plum
+  */
+
+  background:
+    linear-gradient(
+      120deg,
+
+      #24151d 0%,
+
+      #45202f 12%,
+
+      #71344a 24%,
+
+      #9a5269 36%,
+
+      #633047 48%,
+
+      #39202d 60%,
+
+      #8a5660 72%,
+
+      #c08b78 82%,
+
+      #5b2b42 92%,
+
+      #281821 100%
+    );
+
+  background-size: 500% 500%;
+
+  animation:
+    cinematicColorFlow
+    28s
+    ease-in-out
+    infinite;
+
+  will-change: background-position;
+}
+
+
+/* ============================================================
+   MAIN ROMANTIC COLOR WASH
+============================================================ */
+
+.page-background::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -20%;
+
+
+  background:
+
+    radial-gradient(
+      circle at 20% 30%,
+
+      rgba(232, 142, 166, 0.22),
+
+      transparent 28%
+    ),
+
+
+    radial-gradient(
+      circle at 80% 25%,
+
+      rgba(128, 62, 93, 0.25),
+
+      transparent 30%
+    ),
+
+
+    radial-gradient(
+      circle at 65% 80%,
+
+      rgba(235, 190, 145, 0.15),
+
+      transparent 27%
+    ),
+
+
+    radial-gradient(
+      circle at 25% 75%,
+
+      rgba(109, 42, 70, 0.25),
+
+      transparent 30%
+    );
+
+
+  filter: blur(70px);
+
+  opacity: 0.85;
+
+  animation:
+    romanticLightFlow
+    34s
+    ease-in-out
+    infinite alternate;
+
+  will-change: transform;
+
+  z-index: -1;
+}
+
+
+/* ============================================================
+   SECONDARY AMBIENT LIGHT
+============================================================ */
+
+.page-background::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -25%;
+
+
+  background:
+
+    radial-gradient(
+      circle at 70% 20%,
+
+      rgba(206, 123, 143, 0.16),
+
+      transparent 30%
+    ),
+
+
+    radial-gradient(
+      circle at 30% 70%,
+
+      rgba(218, 170, 121, 0.12),
+
+      transparent 28%
+    ),
+
+
+    radial-gradient(
+      circle at 55% 50%,
+
+      rgba(124, 66, 103, 0.12),
+
+      transparent 34%
+    );
+
+
+  filter: blur(100px);
+
+  opacity: 0.72;
+
+  animation:
+    romanticLightFlowReverse
+    40s
+    ease-in-out
+    infinite alternate;
+
+  will-change: transform;
+
+  z-index: -1;
+}
+
+
+/* ============================================================
+   BASE COLOR FLOW
+============================================================ */
+
+@keyframes cinematicColorFlow {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  12% {
+    background-position: 18% 32%;
+  }
+
+  25% {
+    background-position: 42% 20%;
+  }
+
+  37% {
+    background-position: 68% 32%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  62% {
+    background-position: 78% 68%;
+  }
+
+  75% {
+    background-position: 48% 84%;
+  }
+
+  87% {
+    background-position: 20% 68%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* ============================================================
+   ROMANTIC LIGHT MOVEMENT
+============================================================ */
+
+@keyframes romanticLightFlow {
+
+  0% {
+    transform:
+      translate3d(-4%, -2%, 0)
+      scale(1);
+  }
+
+  25% {
+    transform:
+      translate3d(5%, 3%, 0)
+      scale(1.05);
+  }
+
+  50% {
+    transform:
+      translate3d(2%, 7%, 0)
+      scale(1.08);
+  }
+
+  75% {
+    transform:
+      translate3d(-6%, 4%, 0)
+      scale(1.04);
+  }
+
+  100% {
+    transform:
+      translate3d(-2%, -4%, 0)
+      scale(1);
+  }
+}
+
+
+/* ============================================================
+   REVERSE LIGHT MOVEMENT
+============================================================ */
+
+@keyframes romanticLightFlowReverse {
+
+  0% {
+    transform:
+      translate3d(5%, 4%, 0)
+      scale(1.04);
+  }
+
+  30% {
+    transform:
+      translate3d(-4%, 1%, 0)
+      scale(1.08);
+  }
+
+  60% {
+    transform:
+      translate3d(-7%, -5%, 0)
+      scale(1.12);
+  }
+
+  100% {
+    transform:
+      translate3d(4%, -3%, 0)
+      scale(1.05);
+  }
+}
+
+
+/* ============================================================
+   CINEMATIC VIGNETTE
+============================================================ */
+
+.page-background {
+  box-shadow:
+    inset 0 0 180px rgba(20, 6, 13, 0.20);
+}
+
+
+/* ============================================================
+   SUBTLE GRID
+============================================================ */
+
+.page-grid {
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.45;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255, 230, 225, 0.025) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255, 230, 225, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 90px 90px;
+}
+
+
+/* ============================================================
+   LIGHT MODE CINEMATIC BACKGROUND
+============================================================ */
+
+html[data-theme="light"] .page-background {
+
+  background:
+    linear-gradient(
+      120deg,
+
+      #f9eeeb 0%,
+
+      #f4dfe3 14%,
+
+      #efd7df 28%,
+
+      #f5e3d9 42%,
+
+      #f7ddd8 56%,
+
+      #eee0e6 70%,
+
+      #f5e7da 84%,
+
+      #faf2ed 100%
+    );
+
+  background-size: 500% 500%;
+
+  animation:
+    cinematicLightColorFlow
+    32s
+    ease-in-out
+    infinite;
+
+  box-shadow:
+    inset 0 0 160px rgba(90, 48, 59, 0.055);
+}
+
+
+/* ============================================================
+   LIGHT MODE COLOR WASH
+============================================================ */
+
+html[data-theme="light"] .page-background::before {
+
+  background:
+
+    radial-gradient(
+      circle at 20% 25%,
+
+      rgba(211, 118, 145, 0.14),
+
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 80% 30%,
+
+      rgba(177, 111, 141, 0.11),
+
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 65% 80%,
+
+      rgba(218, 177, 125, 0.13),
+
+      transparent 28%
+    );
+
+  opacity: 0.75;
+}
+
+
+/* ============================================================
+   LIGHT MODE SECONDARY WASH
+============================================================ */
+
+html[data-theme="light"] .page-background::after {
+
+  background:
+
+    radial-gradient(
+      circle at 70% 20%,
+
+      rgba(205, 125, 148, 0.10),
+
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 30% 75%,
+
+      rgba(218, 174, 128, 0.10),
+
+      transparent 30%
+    );
+
+  opacity: 0.65;
+}
+
+
+/* ============================================================
+   LIGHT MODE COLOR FLOW
+============================================================ */
+
+@keyframes cinematicLightColorFlow {
+
+  0% {
+    background-position: 0% 50%;
+  }
+
+  20% {
+    background-position: 25% 30%;
+  }
+
+  40% {
+    background-position: 55% 45%;
+  }
+
+  60% {
+    background-position: 85% 60%;
+  }
+
+  80% {
+    background-position: 55% 75%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* ============================================================
+   EXISTING HOME.JSX COLOR COMPATIBILITY
+============================================================ */
+
+.bg-\[\#09090b\] {
+  background-color: var(--bg) !important;
+}
+
+
+.text-\[\#f4f1ee\] {
+  color: var(--text-primary) !important;
+}
+
+
+.bg-\[\#f4f1ee\] {
+  background-color: var(--button-bg) !important;
+}
+
+
+.text-\[\#09090b\] {
+  color: var(--button-text) !important;
+}
+
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.bg-\[\#0b0b0e\]\/85 {
+
+  background-color:
+    color-mix(
+      in srgb,
+      var(--surface) 90%,
+      transparent
+    ) !important;
+}
+
+
+/* ============================================================
+   STORY CARD
+============================================================ */
+
+.from-\[\#272126\] {
+
+  --tw-gradient-from:
+    var(--surface-elevated)
+    var(--tw-gradient-from-position) !important;
+}
+
+
+.via-\[\#171418\] {
+
+  --tw-gradient-via:
+    var(--surface)
+    var(--tw-gradient-via-position) !important;
+}
+
+
+.to-\[\#0d0d10\] {
+
+  --tw-gradient-to:
+    var(--surface-deep)
+    var(--tw-gradient-to-position) !important;
+}
+
+
+/* ============================================================
+   FINAL CTA CARD
+============================================================ */
+
+.from-\[\#211b20\] {
+
+  --tw-gradient-from:
+
+    color-mix(
+      in srgb,
+      var(--burgundy) 18%,
+      var(--surface-elevated)
+    )
+
+    var(--tw-gradient-from-position) !important;
+}
+
+
+.via-\[\#121115\] {
+
+  --tw-gradient-via:
+    var(--surface)
+    var(--tw-gradient-via-position) !important;
+}
+
+
+/* ============================================================
+   LIGHT MODE TRANSPARENT BACKGROUNDS
+============================================================ */
+
+html[data-theme="light"] .bg-white\/\[0\.018\] {
+  background-color:
+    rgba(48, 35, 40, 0.018) !important;
+}
+
+
+html[data-theme="light"] .bg-white\/\[0\.025\] {
+  background-color:
+    rgba(48, 35, 40, 0.025) !important;
+}
+
+
+html[data-theme="light"] .bg-white\/\[0\.035\] {
+  background-color:
+    rgba(48, 35, 40, 0.035) !important;
+}
+
+
+html[data-theme="light"] .bg-white\/\[0\.04\] {
+  background-color:
+    rgba(48, 35, 40, 0.04) !important;
+}
+
+
+html[data-theme="light"] .bg-white\/\[0\.03\] {
+  background-color:
+    rgba(48, 35, 40, 0.03) !important;
+}
+
+
+/* ============================================================
+   LIGHT MODE BORDERS
+============================================================ */
+
+html[data-theme="light"] .border-white\/10 {
+  border-color:
+    rgba(48, 35, 40, 0.10) !important;
+}
+
+
+html[data-theme="light"] .border-white\/20 {
+  border-color:
+    rgba(48, 35, 40, 0.16) !important;
+}
+
+
+html[data-theme="light"] .border-white\/\[0\.09\] {
+  border-color:
+    rgba(48, 35, 40, 0.09) !important;
+}
+
+
+html[data-theme="light"] .border-white\/\[0\.08\] {
+  border-color:
+    rgba(48, 35, 40, 0.08) !important;
+}
+
+
+html[data-theme="light"] .border-white\/\[0\.07\] {
+  border-color:
+    rgba(48, 35, 40, 0.07) !important;
+}
+
+
+html[data-theme="light"] .border-white\/\[0\.06\] {
+  border-color:
+    rgba(48, 35, 40, 0.06) !important;
+}
+
+
+/* ============================================================
+   LIGHT MODE TEXT
+============================================================ */
+
+html[data-theme="light"] .text-white\/90 {
+  color: var(--text-primary) !important;
+}
+
+
+html[data-theme="light"] .text-white\/80 {
+  color: var(--text-primary) !important;
+}
+
+
+html[data-theme="light"] .text-white\/75 {
+  color: #4c3e44 !important;
+}
+
+
+html[data-theme="light"] .text-white\/70 {
+  color: #574850 !important;
+}
+
+
+html[data-theme="light"] .text-white\/65 {
+  color: #63545b !important;
+}
+
+
+html[data-theme="light"] .text-white\/60 {
+  color: #6d5e65 !important;
+}
+
+
+html[data-theme="light"] .text-white\/55 {
+  color: #75666d !important;
+}
+
+
+html[data-theme="light"] .text-white\/50 {
+  color: #7d6e75 !important;
+}
+
+
+html[data-theme="light"] .text-white\/45 {
+  color: #86777e !important;
+}
+
+
+html[data-theme="light"] .text-white\/40 {
+  color: #8f8087 !important;
+}
+
+
+html[data-theme="light"] .text-white\/35 {
+  color: #97888f !important;
+}
+
+
+html[data-theme="light"] .text-white\/30 {
+  color: #a09298 !important;
+}
+
+
+html[data-theme="light"] .text-white\/25 {
+  color: #aa9ba1 !important;
+}
+
+
+html[data-theme="light"] .text-white\/20 {
+  color: #b3a4aa !important;
+}
+
+
+/* ============================================================
+   LIGHT MODE FLOATING NOTE
+============================================================ */
+
+html[data-theme="light"] .bg-\[\#111116\] {
+  background-color: #fffdfb !important;
+}
+
+
+/* ============================================================
+   CREATE PAGE
+   ------------------------------------------------------------
+   IMPORTANT:
+   The page itself is transparent.
+
+   This allows the global cinematic background from App.jsx
+   to remain visible behind the Create Story interface.
+============================================================ */
+
+.create-page {
+
+  position: relative;
+
+  min-height: 100vh;
+
+  background: transparent;
+
+  color: var(--text-primary);
+
+  transition:
+    color 0.4s ease;
+}
+
+
+/* ============================================================
+   CREATE SURFACES
+============================================================ */
+
+.create-surface {
+
+  background: var(--surface);
+
+  border-color: var(--border-soft);
+}
+
+
+.create-elevated {
+
+  background: var(--surface-elevated);
+
+  border-color: var(--border);
+}
+
+
+.create-input {
+
+  background: var(--surface-soft);
+
+  border-color: var(--border);
+
+  color: var(--text-primary);
+}
+
+
+.create-input::placeholder {
+  color: var(--text-faint);
+}
+
+
+.create-input:focus {
+
+  border-color: var(--border-strong);
+
+  background: var(--surface);
+}
+
+
+.create-button {
+
+  background: var(--button-bg);
+
+  color: var(--button-text);
+}
+
+
+.create-muted {
+  color: var(--text-muted);
+}
+
+
+.create-secondary {
+  color: var(--text-secondary);
+}
+
+
+.create-border {
+  border-color: var(--border);
+}
+
+
+/* ============================================================
+   ENTRANCE ANIMATION
+============================================================ */
+
+.fade-up {
+
+  opacity: 0;
+
+  transform: translateY(18px);
+
+  animation:
+    fadeUp
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+.fade-up-delay-1 {
+  animation-delay: 0.08s;
+}
+
+
+.fade-up-delay-2 {
+  animation-delay: 0.16s;
+}
+
+
+.fade-up-delay-3 {
+  animation-delay: 0.24s;
+}
+
+
+@keyframes fadeUp {
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+/* ============================================================
+   FLOATING ELEMENT
+============================================================ */
+
+.float-slow {
+
+  animation:
+    floatSlow
+    6s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes floatSlow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+}
+
+
+/* ============================================================
+   GLOBAL CINEMATIC BACKGROUND
+   ------------------------------------------------------------
+   App.jsx renders:
+
+   app-background-layer
+      ├── page-background
+      └── page-grid
+
+   This layer stays behind every route.
+============================================================ */
+
+.app-background-layer {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  isolation: isolate;
+}
+
+
+/* ============================================================
+   GLOBAL BACKGROUND ELEMENT
+============================================================ */
+
+.app-background-layer .page-background {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* ============================================================
+   GLOBAL GRID
+============================================================ */
+
+.app-background-layer .page-grid {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* ============================================================
+   APPLICATION CONTENT
+============================================================ */
+
+.app-content {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 100vh;
+}
+
+
+/* ============================================================
+   ROUTE CONTENT
+============================================================ */
+
+.app-content > * {
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* ============================================================
+   ACCESSIBILITY / REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  .page-background,
+  .page-background::before,
+  .page-background::after {
+
+    animation: none !important;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 767px) {
+
+  .app-background-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+  }
+
+
+  .page-background::before {
+
+    inset: -30%;
+
+    filter: blur(60px);
+  }
+
+
+  .page-background::after {
+
+    inset: -30%;
+
+    filter: blur(75px);
+  }
+
+
+  .page-grid {
+
+    background-size: 65px 65px;
+  }
+
+}
