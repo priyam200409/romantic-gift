@@ -841,7 +841,11 @@ function Universe() {
             "
           >
 
-            Hi{" "}
+            
+
+            Happy Birthday,
+
+            <br />
 
             <span
               className="
@@ -850,7 +854,7 @@ function Universe() {
                 text-theme-secondary
               "
             >
-              {nickname}
+              Sneha!
             </span>
 
             .
