@@ -1,7 +1,24 @@
 import { useState } from "react"
-import { Heart, LockKeyhole, ArrowRight, ShieldCheck } from "lucide-react"
-import { Link, useNavigate, useSearchParams } from "react-router-dom"
+import { Heart, LockKeyhole, ArrowRight } from "lucide-react"
+import { Link, useNavigate } from "react-router-dom"
 import ThemeToggle from "../components/ThemeToggle"
+
+
+/*
+  ==========================================================
+  FRONTEND GIFT CODE
+
+  Change this value whenever you want to change the code
+  that unlocks the private experience.
+
+  IMPORTANT:
+  This is frontend-only validation. The code is bundled
+  into the browser, so it is suitable for your current
+  private MVP, not production-grade security.
+  ==========================================================
+*/
+
+const VALID_GIFT_CODE = "PRIYAM2026"
 
 
 function SpecialPersonAccess({
@@ -11,36 +28,30 @@ function SpecialPersonAccess({
 
   const navigate = useNavigate()
 
-  const [searchParams] = useSearchParams()
-
-  const giftIdFromUrl =
-    searchParams.get("gift") || ""
-
-
-  const [giftId, setGiftId] =
-    useState(giftIdFromUrl)
-
-  const [privateKey, setPrivateKey] =
+  const [giftCode, setGiftCode] =
     useState("")
-
-  const [step, setStep] =
-    useState(1)
-
 
   const [error, setError] =
     useState("")
 
 
-  /* ==========================================================
-     STEP 1
-     IDENTIFY THE GIFT
-  ========================================================== */
+  /*
+    ==========================================================
+    VALIDATE THE SINGLE FIELD
 
-  const handleContinue = () => {
+    The entered value is compared directly with the code
+    defined above.
+    ==========================================================
+  */
+
+  const handleUnlock = () => {
 
     setError("")
 
-    if (!giftId.trim()) {
+    const enteredCode =
+      giftCode.trim()
+
+    if (!enteredCode) {
 
       setError(
         "Please enter your private gift code."
@@ -50,31 +61,14 @@ function SpecialPersonAccess({
 
     }
 
-    setStep(2)
 
-  }
-
-
-  /* ==========================================================
-     STEP 2
-     PRIVATE KEY
-
-     IMPORTANT:
-
-     This is currently a prototype.
-
-     Later the backend will verify the key securely.
-  ========================================================== */
-
-  const handleUnlock = () => {
-
-    setError("")
-
-
-    if (!privateKey.trim()) {
+    if (
+      enteredCode.toUpperCase() !==
+      VALID_GIFT_CODE.toUpperCase()
+    ) {
 
       setError(
-        "Please enter your private key."
+        "That gift code doesn't look right. Try again ❤️"
       )
 
       return
@@ -83,48 +77,21 @@ function SpecialPersonAccess({
 
 
     /*
-      TEMPORARY DEVELOPMENT BEHAVIOUR
+      Code is valid.
 
-      We are not pretending this is production
-      authentication yet.
-
-      Later:
-
-      privateKey
-          ↓
-      Supabase/server
-          ↓
-      verify gift
-          ↓
-      create recipient session
-          ↓
-      Universe
+      For now we simply open the personalized universe.
+      Later this can be replaced with Supabase/backend
+      verification without changing the UI.
     */
-
 
     sessionStorage.setItem(
       "our-story-access",
-      "pending-verification"
+      "verified"
     )
 
-
-    sessionStorage.setItem(
-      "our-story-gift-id",
-      giftId.trim()
-    )
-
-
-    navigate(
-      `/access?gift=${encodeURIComponent(
-        giftId.trim()
-      )}&verify=true`
-    )
+    navigate("/universe")
 
   }
-
-
-  const verificationMode =
-    searchParams.get("verify") === "true"
 
 
   return (
@@ -230,6 +197,7 @@ function SpecialPersonAccess({
 
       {/* ======================================================
           ACCESS CARD
+          UI intentionally kept the same.
       ====================================================== */}
 
       <section
@@ -273,21 +241,10 @@ function SpecialPersonAccess({
             "
           >
 
-            {verificationMode ? (
-
-              <ShieldCheck
-                size={22}
-                className="text-theme-secondary"
-              />
-
-            ) : (
-
-              <LockKeyhole
-                size={21}
-                className="text-theme-secondary"
-              />
-
-            )}
+            <LockKeyhole
+              size={21}
+              className="text-theme-secondary"
+            />
 
           </div>
 
@@ -304,11 +261,7 @@ function SpecialPersonAccess({
               text-theme-muted
             "
           >
-
-            {verificationMode
-              ? "One more step"
-              : "Private access"}
-
+            Private access
           </p>
 
 
@@ -326,27 +279,12 @@ function SpecialPersonAccess({
             "
           >
 
-            {verificationMode ? (
+            Someone made
+            <br />
 
-              <>
-                Make sure it's
-                <br />
-                <span className="serif italic text-theme-secondary">
-                  really you.
-                </span>
-              </>
-
-            ) : (
-
-              <>
-                Someone made
-                <br />
-                <span className="serif italic text-theme-secondary">
-                  something for you.
-                </span>
-              </>
-
-            )}
+            <span className="serif italic text-theme-secondary">
+              something for you.
+            </span>
 
           </h1>
 
@@ -364,284 +302,93 @@ function SpecialPersonAccess({
               text-theme-muted
             "
           >
-
-            {verificationMode
-
-              ? "This private experience has one more little question before it opens."
-
-              : "Enter the private code that the creator gave you to access your little universe."
-            }
-
+            Enter the private code that the creator gave you
+            to access your little universe.
           </p>
 
 
           {/* ==================================================
-              STEP 1
+              SINGLE VALIDATING FIELD
           ================================================== */}
 
-          {!verificationMode && step === 1 && (
+          <div className="mt-10">
 
-            <div className="mt-10">
-
-              <label
-                className="
-                  mb-3
-                  block
-                  text-xs
-                  text-theme-secondary
-                "
-              >
-                Gift code
-              </label>
+            <label
+              className="
+                mb-3
+                block
+                text-xs
+                text-theme-secondary
+              "
+            >
+              Gift code
+            </label>
 
 
-              <input
-                value={giftId}
-                onChange={(event) =>
-                  setGiftId(
-                    event.target.value
-                  )
+            <input
+              type="password"
+              value={giftCode}
+              onChange={(event) => {
+                setGiftCode(event.target.value)
+                setError("")
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  handleUnlock()
                 }
-                placeholder="Enter your gift code"
+              }}
+              placeholder="Enter your gift code"
+              autoComplete="off"
+              className="
+                create-input
+                w-full
+                rounded-2xl
+                border
+                px-5
+                py-4
+                text-sm
+                outline-none
+                transition
+              "
+            />
+
+
+            <button
+              type="button"
+              onClick={handleUnlock}
+              className="
+                group
+                mt-5
+                flex
+                w-full
+                items-center
+                justify-center
+                gap-3
+                rounded-full
+                bg-theme-button
+                px-6
+                py-4
+                text-sm
+                font-semibold
+                text-theme-button
+                transition
+                hover:-translate-y-0.5
+              "
+            >
+
+              Open my universe
+
+              <ArrowRight
+                size={15}
                 className="
-                  create-input
-                  w-full
-                  rounded-2xl
-                  border
-                  px-5
-                  py-4
-                  text-sm
-                  outline-none
-                  transition
+                  transition-transform
+                  group-hover:translate-x-1
                 "
               />
 
+            </button>
 
-              <button
-                type="button"
-                onClick={handleContinue}
-                className="
-                  group
-                  mt-5
-                  flex
-                  w-full
-                  items-center
-                  justify-center
-                  gap-3
-                  rounded-full
-                  bg-theme-button
-                  px-6
-                  py-4
-                  text-sm
-                  font-semibold
-                  text-theme-button
-                  transition
-                  hover:-translate-y-0.5
-                "
-              >
-
-                Continue
-
-                <ArrowRight
-                  size={15}
-                  className="
-                    transition-transform
-                    group-hover:translate-x-1
-                  "
-                />
-
-              </button>
-
-            </div>
-
-          )}
-
-
-          {/* ==================================================
-              STEP 2
-          ================================================== */}
-
-          {!verificationMode && step === 2 && (
-
-            <div className="mt-10">
-
-              <label
-                className="
-                  mb-3
-                  block
-                  text-xs
-                  text-theme-secondary
-                "
-              >
-                Private key
-              </label>
-
-
-              <input
-                type="password"
-                value={privateKey}
-                onChange={(event) =>
-                  setPrivateKey(
-                    event.target.value
-                  )
-                }
-                placeholder="Enter the private key"
-                className="
-                  create-input
-                  w-full
-                  rounded-2xl
-                  border
-                  px-5
-                  py-4
-                  text-sm
-                  outline-none
-                  transition
-                "
-              />
-
-
-              <button
-                type="button"
-                onClick={handleUnlock}
-                className="
-                  group
-                  mt-5
-                  flex
-                  w-full
-                  items-center
-                  justify-center
-                  gap-3
-                  rounded-full
-                  bg-theme-button
-                  px-6
-                  py-4
-                  text-sm
-                  font-semibold
-                  text-theme-button
-                  transition
-                  hover:-translate-y-0.5
-                "
-              >
-
-                Continue to verification
-
-                <ArrowRight
-                  size={15}
-                  className="
-                    transition-transform
-                    group-hover:translate-x-1
-                  "
-                />
-
-              </button>
-
-            </div>
-
-          )}
-
-
-          {/* ==================================================
-              VERIFICATION PLACEHOLDER
-
-              We will replace this with the creator-defined
-              question once the backend/data structure is ready.
-          ================================================== */}
-
-          {verificationMode && (
-
-            <div className="mt-10">
-
-              <div
-                className="
-                  rounded-2xl
-                  border
-                  border-theme-soft
-                  bg-surface-soft
-                  p-5
-                "
-              >
-
-                <p
-                  className="
-                    text-xs
-                    text-theme-muted
-                  "
-                >
-                  Verification question
-                </p>
-
-
-                <p
-                  className="
-                    mt-3
-                    text-sm
-                    leading-6
-                    text-theme-primary
-                  "
-                >
-                  What is a special memory only the two of you would know?
-                </p>
-
-              </div>
-
-
-              <input
-                placeholder="Your answer..."
-                className="
-                  create-input
-                  mt-4
-                  w-full
-                  rounded-2xl
-                  border
-                  px-5
-                  py-4
-                  text-sm
-                  outline-none
-                "
-              />
-
-
-              <button
-                type="button"
-                onClick={() =>
-                  navigate("/universe")
-                }
-                className="
-                  group
-                  mt-5
-                  flex
-                  w-full
-                  items-center
-                  justify-center
-                  gap-3
-                  rounded-full
-                  bg-theme-button
-                  px-6
-                  py-4
-                  text-sm
-                  font-semibold
-                  text-theme-button
-                  transition
-                  hover:-translate-y-0.5
-                "
-              >
-
-                Enter my universe
-
-                <Heart
-                  size={15}
-                  fill="currentColor"
-                  className="
-                    transition-transform
-                    group-hover:scale-110
-                  "
-                />
-
-              </button>
-
-            </div>
-
-          )}
+          </div>
 
 
           {/* ERROR */}
